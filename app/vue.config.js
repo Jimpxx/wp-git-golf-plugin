@@ -1,17 +1,12 @@
 const devPort = 8081;
 module.exports = {
-  // filenameHashing: false,
-  // publicPath: './',
   outputDir: "build",
   devServer: {
     hot: true,
     writeToDisk: true,
     liveReload: false,
     sockPort: devPort,
-    // public: `0.0.0.0:${devPort}`,
     port: devPort,
-    // headers: { "Access-Control-Allow-Origin": "*" },
-    // https: true,
     disableHostCheck: true,
     headers: {
       "Access-Control-Allow-Origin": "*",

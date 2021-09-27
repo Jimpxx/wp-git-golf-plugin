@@ -11,13 +11,9 @@
 </template>
 
 <script>
-// import Login from "./components/Login.vue";
-// import Medlemsmatrikel from "./components/Medlemsmatrikel.vue";
 
 export default {
   components: {
-    // Login,
-    // Medlemsmatrikel,
   },
   data() {
     return {
@@ -57,19 +53,13 @@ export default {
   a {
     font-weight: bold;
     color: v-bind(gitCardLinkColor);
-    // color: #977742;
-    // color: #2c3e50;
 
     &:hover {
       filter: brightness(1.5);
     }
 
     &.router-link-exact-active {
-      // filter: brightness(0.85);
       color: v-bind(gitCardLinkHoverColor);
-      // color: #a3834f;
-      // color: #004987;
-      // color: #42b983;
     }
   }
 }

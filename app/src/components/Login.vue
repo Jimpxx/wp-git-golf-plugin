@@ -20,7 +20,6 @@
         />
       </div>
       <button>Logga in</button>
-      <!-- <input type="submit" value="Logga in" /> -->
     </form>
     <p v-if="error">{{ error }}</p>
   </div>
@@ -71,7 +70,6 @@ export default {
           : false;
 
       console.log(this.checkUser);
-      // console.log(typeof( this.checkUser));
       if (this.checkUser) {
         this.$cookies.set("concil-git-valid", true, "1h");
         // window.location.reload(); // Javascript reload
@@ -107,8 +105,6 @@ export default {
     input:focus {
       outline: none;
       border-color: #1472c5;
-      // border-width: 2px;
-      // border-radius: 5px;
       background-color: #ffffff;
     }
     label {

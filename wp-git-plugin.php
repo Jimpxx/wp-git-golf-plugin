@@ -87,7 +87,6 @@ if( !function_exists("git_admin_page") ) {
                     <td>
                     <?php wp_dropdown_pages( array(
                         'name'          => 'git_installed_page',
-                        // 'show_option_none' => 'Välj en sida',
                         'child_of'      => 0,
                         'sort_order'    => 'ASC',
                         'sort_column'   => 'post_title',
@@ -96,7 +95,6 @@ if( !function_exists("git_admin_page") ) {
                         'selected'      => get_option('git_installed_page')
                     ) ); ?>
                     </td> 
-                    <!-- <td><input type="text" name="git_password" value="<?php echo get_option('git_installed_page'); ?>"/></td>  -->  
                 </tr>  
                 <tr valign="top">       
                     <th scope="row">Sidor som kräver GIT inloggning:</th>       
@@ -116,7 +114,6 @@ if( !function_exists("git_admin_page") ) {
                         'selected'      => get_option('git_restricted_pages')
                     ) ); ?>
                     </td> 
-                    <!-- <td><input type="text" name="git_password" value="<?php echo get_option('git_restricted_pages'); ?>"/></td>  -->  
                 </tr>
                 <tr>
                     <th>
@@ -182,19 +179,16 @@ function wpb_demo_shortcode_2() {
  
     wp_enqueue_script( 'my-vue-app-vendors',
         plugins_url( '/app/build/js/chunk-vendors.js', __FILE__ ),
-        // plugins_url( '/app/build/js/chunk-vendors.js', __FILE__ ),
         array(),
         '1.0.0'
     );
     wp_enqueue_script( 'my-vue-app',
         plugins_url( '/app/build/app.js', __FILE__ ),
-        // plugins_url( '/app/build/js/app.js', __FILE__ ),
         array( 'my-vue-app-vendors' ),
         '1.0.0'
     );
     wp_enqueue_style( 'my-vue-app',
         plugins_url( '/app/build/app.css', __FILE__),
-        // plugins_url( '/app/build/css/app.css', __FILE__),
         array(),
         '1.0.0'
     );
@@ -220,10 +214,7 @@ function wpb_demo_shortcode_2() {
 
     wp_localize_script('my-vue-app', 'vueData', $data );
 
-    return '<div id="app"></div>';
-
-    // return $string; 
-     
+    return '<div id="app"></div>';     
 }
 // Register shortcode
 add_shortcode('git_code', 'wpb_demo_shortcode_2'); 
@@ -241,7 +232,6 @@ function cookiebasedredirect() {
         // GRABS THE CURRENT PAGE NAME - THIS IS ALSO KNOWS AS THE PAGE/POST SLUG
         $pagename = get_query_var('pagename');
 		// Redirects if the slug of the page is "private"
-        // if( $pagename == "stadgar-och-regler") {                  
         if( $pagename == get_page(get_option('git_restricted_pages'))->post_name) {          
             wp_redirect( get_site_url(). '/' . get_page(get_option('git_installed_page'))->post_name ); exit;
         } else {

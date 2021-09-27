@@ -21,21 +21,3 @@ $options = array(
 foreach ($options as $option) {
 	if (get_option($option)) delete_option($option);
 }
-
-// delete plugin options
-// delete_option('git_guid');
-// delete_option('git_username');
-// delete_option('git_password');
-// delete_option('git_installed_page');
-// delete_option('git_restricted_pages');
-// delete_option('git_card_background_color');
-// delete_option('git_text_color');
-// delete_option('git_label_color');
-// delete_option('git_link_color');
-// delete_option('git_link_hover_color');
-// delete_option('git_loading_icon_color');
-// delete_option('git_border_color');
-// delete_option('git_border_top_color');
-
-
-

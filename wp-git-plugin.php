@@ -51,6 +51,7 @@ if( !function_exists("register_git_settings") ) {
         register_setting( 'git-settings', 'git_loading_icon_color');
         register_setting( 'git-settings', 'git_border_color');
         register_setting( 'git-settings', 'git_border_top_color');
+        register_setting( 'git-settings', 'git_active_medlemsmatrikel');
     } 
 }  
 // Create WordPress plugin page 
@@ -116,6 +117,16 @@ if( !function_exists("git_admin_page") ) {
                     ) ); ?>
                     </td> 
                     <!-- <td><input type="text" name="git_password" value="<?php echo get_option('git_restricted_pages'); ?>"/></td>  -->  
+                </tr>
+                <tr>
+                    <th>
+                        <h2>Moduler</h2>
+                        <td></td>
+                    </th>
+                </tr>
+                <tr valign="top">       
+                    <th scope="row">Medlemsmatrikel:</th>       
+                    <td><input type="checkbox" name="git_active_medlemsmatrikel" value="1"<?php checked(1, get_option('git_active_medlemsmatrikel', "1")) ?>/></td>       
                 </tr>
                 <tr>
                     <th>
@@ -204,6 +215,7 @@ function wpb_demo_shortcode_2() {
         'git_loading_icon_color' => get_option('git_loading_icon_color', "#004987"),
         'git_border_color' => get_option('git_border_color', "#eeeeee"),
         'git_border_top_color' => get_option('git_border_top_color', "#004987"),
+        'git_active_medlemsmatrikel' => get_option('git_active_medlemsmatrikel', "1"),
       );
 
     wp_localize_script('my-vue-app', 'vueData', $data );

@@ -2,7 +2,9 @@
   <div>
     <div v-if="isLoggedIn" id="nav">
       <!-- <router-link to="/">Home</router-link> | -->
-      <router-link to="/medlemsmatrikel">Medlemsmatrikel</router-link>
+      <router-link v-if="activeMedlemsmatrikel == 1" to="/medlemsmatrikel"
+        >Medlemsmatrikel</router-link
+      >
     </div>
     <router-view />
   </div>
@@ -22,6 +24,7 @@ export default {
       vueData: window.vueData,
       gitCardLinkColor: window.vueData.git_link_color,
       gitCardLinkHoverColor: window.vueData.git_link_hover_color,
+      activeMedlemsmatrikel: window.vueData.git_active_medlemsmatrikel,
     };
   },
   computed: {

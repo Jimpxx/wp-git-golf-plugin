@@ -4,6 +4,9 @@ import Store from "../store/index.js";
 import Home from "../views/Home.vue";
 import Medlemsmatrikel from "../views/Medlemsmatrikel.vue";
 
+const activeMedlemsmatrikel = window.vueData.git_active_medlemsmatrikel;
+// console.log(activeMedlemsmatrikel);
+
 const routes = [
   {
     path: "/",
@@ -16,10 +19,13 @@ const routes = [
     beforeEnter(to, from, next) {
       // if (!this.$cookies.get("concil-git-valid")) {
       // console.log(Store.state.isLoggedIn);
-      if (!Store.state.isLoggedIn) {
+      // console.log("beforeEnter");
+      // console.log("Value: '" + activeMedlemsmatrikel + "'");
+      // console.log(typeof activeMedlemsmatrikel);
+      if (!Store.state.isLoggedIn || activeMedlemsmatrikel == "") {
         // console.log("Ej Inloggad..");
         next("/");
-        // return false;
+        return false;
       }
       next();
     },

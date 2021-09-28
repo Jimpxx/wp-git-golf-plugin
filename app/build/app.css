@@ -1,1 +1,110 @@
-#app{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-align:center;color:#2c3e50;width:100%}#nav{padding:30px}#nav a{font-weight:700;color:var(--168cb84c)}#nav a:hover{filter:brightness(1.5)}#nav a.router-link-exact-active{color:var(--77f59970)}.login h2{color:#004987}.login p{font-size:1.1rem;margin-bottom:.7rem}.login form input{width:100%;border:1px solid #004987;border-radius:5px;margin:0 0 15px 0;padding:.7rem}.login form input:focus{outline:none;border-color:#1472c5;background-color:#fff}.login form label{display:block;text-align:left;color:#004987;margin-bottom:0;font-size:.8rem}.login form button{border-radius:5px;padding:.5rem 1rem;margin-top:1rem;background-color:#004987;color:#fff}.success[data-v-9c288822]{color:#19c919}.medlemsmatrikel{text-align:left}.medlemsmatrikel .loading-svg{display:block;margin:auto;fill:#a3834f}.medlemsmatrikel ul{list-style:none;padding-left:0}.medlemsmatrikel ul .item{background:var(--54364062);color:var(--4400dab0);border:var(--6bc1fc91);border-top:var(--646bf1c0);border-radius:5px;margin-bottom:1rem;padding:.7rem}.medlemsmatrikel ul .item .item-container label{display:block;color:var(--f51c48d6);margin-bottom:0;font-weight:700;font-size:.8rem}.medlemsmatrikel ul .item .item-container .item-sides{display:flex;justify-content:space-between}.medlemsmatrikel ul .item .item-container .item-sides .item-content-left{text-align:left}.medlemsmatrikel ul .item .item-container .item-sides .item-content-right{text-align:right}@media only screen and (max-width:600px){.medlemsmatrikel{font-size:1rem}}@media only screen and (max-width:450px){.medlemsmatrikel{font-size:.8rem}.medlemsmatrikel .item{padding:.5rem}}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  width: 100%;
+}
+#nav {
+  padding: 30px;
+}
+#nav a {
+  font-weight: bold;
+  color: var(--7ba5bd90-gitCardLinkColor);
+}
+#nav a:hover {
+  filter: brightness(1.5);
+}
+#nav a.router-link-exact-active {
+  color: var(--7ba5bd90-gitCardLinkHoverColor);
+}
+.login h2 {
+  color: var(--ef68022e-gitLoginHeadingColor);
+}
+.login p {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+.login form input {
+  width: 100%;
+  border: var(--ef68022e-gitLoginInputBorder);
+  border-radius: 5px;
+  margin: 0 0 15px 0;
+  padding: 0.7rem;
+}
+.login form input:focus {
+  outline: none;
+  border-color: var(--ef68022e-gitLoginInputBorderActiveColor);
+  background-color: #ffffff;
+}
+.login form label {
+  display: block;
+  text-align: left;
+  color: var(--ef68022e-gitLoginLabelColor);
+  margin-bottom: 0;
+  font-size: 0.8rem;
+}
+.login form button {
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  background-color: var(--ef68022e-gitLoginButtonColor);
+  color: var(--ef68022e-gitLoginButtonTextColor);
+}
+.login form button:hover {
+  filter: brightness(1.1);
+}
+.success[data-v-fae5bece] {
+  color: #19c919;
+}
+.medlemsmatrikel {
+  text-align: left;
+}
+.medlemsmatrikel .loading-svg {
+  display: block;
+  margin: auto;
+}
+.medlemsmatrikel ul {
+  list-style: none;
+  padding-left: 0;
+}
+.medlemsmatrikel ul .item {
+  background: var(--170f92bc-gitCardBackgroundColor);
+  color: var(--170f92bc-gitCardTextColor);
+  border: var(--170f92bc-gitCardBorderColor);
+  border-top: var(--170f92bc-gitCardBorderTopColor);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  padding: 0.7rem;
+}
+.medlemsmatrikel ul .item .item-container label {
+  display: block;
+  color: var(--170f92bc-gitCardLabelColor);
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.medlemsmatrikel ul .item .item-container .item-sides {
+  display: flex;
+  justify-content: space-between;
+}
+.medlemsmatrikel ul .item .item-container .item-sides .item-content-left {
+  text-align: left;
+}
+.medlemsmatrikel ul .item .item-container .item-sides .item-content-right {
+  text-align: right;
+}
+@media only screen and (max-width: 600px) {
+.medlemsmatrikel {
+    font-size: 1rem;
+}
+}
+@media only screen and (max-width: 450px) {
+.medlemsmatrikel {
+    font-size: 0.8rem;
+}
+.medlemsmatrikel .item {
+    padding: 0.5rem;
+}
+}

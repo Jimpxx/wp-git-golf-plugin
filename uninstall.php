@@ -16,7 +16,14 @@ $options = array(
     'git_link_hover_color',
     'git_loading_icon_color',
     'git_border_color',
-    'git_border_top_color'
+    'git_border_top_color',
+    'git_active_medlemsmatrikel',
+    'git_login_button_color',
+    'git_login_button_text_color',
+    'git_login_label_color',
+    'git_login_heading_color',
+    'git_login_input_border_color',
+    'git_login_input_border_active_color',
 );
 foreach ($options as $option) {
 	if (get_option($option)) delete_option($option);

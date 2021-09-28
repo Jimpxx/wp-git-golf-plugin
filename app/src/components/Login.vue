@@ -35,6 +35,13 @@ export default {
       password: "",
       checkUser: false,
       error: null,
+      gitLoginButtonColor: window.vueData.git_login_button_color,
+      gitLoginButtonTextColor: window.vueData.git_login_button_text_color,
+      gitLoginHeadingColor: window.vueData.git_login_heading_color,
+      gitLoginLabelColor: window.vueData.git_login_label_color,
+      gitLoginInputBorder: `1px solid ${window.vueData.git_login_input_border_color}`,
+      gitLoginInputBorderActiveColor:
+        window.vueData.git_login_input_border_active_color,
     };
   },
   methods: {
@@ -88,7 +95,8 @@ export default {
 <style lang="scss">
 .login {
   h2 {
-    color: #004987;
+    color: v-bind(gitLoginHeadingColor);
+    // color: #004987;
   }
   p {
     font-size: 1.1rem;
@@ -97,20 +105,23 @@ export default {
   form {
     input {
       width: 100%;
-      border: 1px solid #004987;
+      border: v-bind(gitLoginInputBorder);
+      // border: 1px solid #004987;
       border-radius: 5px;
       margin: 0 0 15px 0;
       padding: 0.7rem;
     }
     input:focus {
       outline: none;
-      border-color: #1472c5;
+      border-color: v-bind(gitLoginInputBorderActiveColor);
+      // border-color: #1472c5;
       background-color: #ffffff;
     }
     label {
       display: block;
       text-align: left;
-      color: #004987;
+      color: v-bind(gitLoginLabelColor);
+      // color: #004987;
       margin-bottom: 0;
       font-size: 0.8rem;
     }
@@ -118,8 +129,13 @@ export default {
       border-radius: 5px;
       padding: 0.5rem 1rem;
       margin-top: 1rem;
-      background-color: #004987;
-      color: #fff;
+      background-color: v-bind(gitLoginButtonColor);
+      // background-color: #004987;
+      color: v-bind(gitLoginButtonTextColor);
+      // color: #fff;
+      &:hover {
+        filter: brightness(1.1);
+      }
     }
   }
 }

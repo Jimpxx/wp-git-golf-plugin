@@ -52,6 +52,13 @@ if( !function_exists("register_git_settings") ) {
         register_setting( 'git-settings', 'git_border_color');
         register_setting( 'git-settings', 'git_border_top_color');
         register_setting( 'git-settings', 'git_active_medlemsmatrikel');
+        register_setting( 'git-settings', 'git_login_button_color');
+        register_setting( 'git-settings', 'git_login_button_text_color');
+        register_setting( 'git-settings', 'git_login_label_color');
+        register_setting( 'git-settings', 'git_login_heading_color');
+        register_setting( 'git-settings', 'git_login_input_border_color');
+        register_setting( 'git-settings', 'git_login_input_border_active_color');
+
     } 
 }  
 // Create WordPress plugin page 
@@ -131,6 +138,12 @@ if( !function_exists("git_admin_page") ) {
                         <td></td>
                     </th>
                 </tr>
+                <tr>
+                    <th>
+                        <h4>Medlemsmatrikel</h4>
+                        <td></td>
+                    </th>
+                </tr>
                 <tr valign="top">       
                     <th scope="row">Bakgrundsfärg kort:</th>       
                     <td><input type="color" name="git_card_background_color" value="<?php echo get_option('git_card_background_color', "#fefefe"); ?>" /></td>       
@@ -163,8 +176,36 @@ if( !function_exists("git_admin_page") ) {
                     <th scope="row">Ramfärg top:</th>       
                     <td><input type="color" name="git_border_top_color" value="<?php echo get_option('git_border_top_color', "#004987"); ?>" /></td>       
                 </tr>     
-                
-
+                <tr>
+                    <th>
+                        <h4>Login</h4>
+                        <td></td>
+                    </th>
+                </tr>
+                <tr valign="top">       
+                    <th scope="row">Färg Login knapp:</th>       
+                    <td><input type="color" name="git_login_button_color" value="<?php echo get_option('git_login_button_color', "#004987"); ?>" /></td>       
+                </tr>  
+                <tr valign="top">       
+                    <th scope="row">Färg Text Login knapp:</th>       
+                    <td><input type="color" name="git_login_button_text_color" value="<?php echo get_option('git_login_button_text_color', "#ffffff"); ?>" /></td>       
+                </tr>  
+                <tr valign="top">       
+                    <th scope="row">Färg Rubrik:</th>       
+                    <td><input type="color" name="git_login_heading_color" value="<?php echo get_option('git_login_heading_color', "#004987"); ?>" /></td>       
+                </tr>  
+                <tr valign="top">       
+                    <th scope="row">Färg Ettiketttext:</th>       
+                    <td><input type="color" name="git_login_label_color" value="<?php echo get_option('git_login_label_color', "#004987"); ?>" /></td>       
+                </tr>  
+                <tr valign="top">       
+                    <th scope="row">Färg textfält Ram:</th>       
+                    <td><input type="color" name="git_login_input_border_color" value="<?php echo get_option('git_login_input_border_color', "#004987"); ?>" /></td>       
+                </tr>  
+                <tr valign="top">       
+                    <th scope="row">Färg textfält Ram Aktiv:</th>       
+                    <td><input type="color" name="git_login_input_border_active_color" value="<?php echo get_option('git_login_input_border_active_color', "#1472c5"); ?>" /></td>       
+                </tr>           
             </table>   
             <?php submit_button(null, "primary", "test"); ?>   
         </form> <?php 
@@ -210,6 +251,12 @@ function wpb_demo_shortcode_2() {
         'git_border_color' => get_option('git_border_color', "#eeeeee"),
         'git_border_top_color' => get_option('git_border_top_color', "#004987"),
         'git_active_medlemsmatrikel' => get_option('git_active_medlemsmatrikel', "1"),
+        'git_login_button_color' => get_option('git_login_button_color', "#004987"),
+        'git_login_button_text_color' => get_option('git_login_button_text_color', "#ffffff"),
+        'git_login_heading_color' => get_option('git_login_heading_color', "#004987"),
+        'git_login_label_color' => get_option('git_login_label_color', "#004987"),
+        'git_login_input_border_color' => get_option('git_login_input_border_color', "#004987"),
+        'git_login_input_border_active_color' => get_option('git_login_input_border_active_color', "#1472c5"),
       );
 
     wp_localize_script('my-vue-app', 'vueData', $data );

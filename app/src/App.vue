@@ -11,10 +11,8 @@
 </template>
 
 <script>
-
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       vueData: window.vueData,

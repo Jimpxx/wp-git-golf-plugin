@@ -9,6 +9,14 @@
 #nav {
   padding: 30px;
 }
+#nav .logout-btn {
+  background-color: #004987;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+}
+#nav .logout-btn:hover {
+  filter: brightness(1.1);
+}
 #nav a {
   font-weight: bold;
   color: var(--7ba5bd90-gitCardLinkColor);

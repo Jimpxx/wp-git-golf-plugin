@@ -5,6 +5,7 @@
       <router-link v-if="activeMedlemsmatrikel == 1" to="/medlemsmatrikel"
         >Medlemsmatrikel</router-link
       >
+      <button class="logout-btn" @click="logout">Logga ut från GIT</button>
     </div>
     <router-view />
   </div>
@@ -24,6 +25,12 @@ export default {
   computed: {
     isLoggedIn() {
       return this.$cookies.get("concil-git-valid") ? true : false;
+    },
+  },
+  methods: {
+    logout() {
+      this.$cookies.remove("concil-git-valid");
+      this.$router.go();
     },
   },
   created() {
@@ -47,6 +54,15 @@ export default {
 
 #nav {
   padding: 30px;
+
+  .logout-btn {
+    background-color: #004987;
+    color: #fff;
+    padding: 0.8rem 1.6rem;
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
 
   a {
     font-weight: bold;

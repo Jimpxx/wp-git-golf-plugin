@@ -2,8 +2,8 @@
   <div>
     <div v-if="isLoggedIn" id="nav">
       <!-- <router-link to="/">Home</router-link> | -->
-      <router-link v-if="activeMedlemsmatrikel == 1" to="/medlemsmatrikel"
-        >Medlemsmatrikel</router-link
+      <router-link v-if="activeMedlemsmatrikel == 1" to="/"
+        >Medlemssidor</router-link
       >
       <!-- <button class="logout-btn" @click="logout">Logga ut från GIT</button> -->
     </div>

@@ -43,6 +43,8 @@ if( !function_exists("register_git_settings") ) {
         register_setting( 'git-settings', 'git_password' );
         register_setting( 'git-settings', 'git_installed_page' );
         register_setting( 'git-settings', 'git_restricted_pages' );
+        register_setting( 'git-settings', 'git_active_medlemsmatrikel');
+        // Colors
         register_setting( 'git-settings', 'git_card_background_color');
         register_setting( 'git-settings', 'git_text_color');
         register_setting( 'git-settings', 'git_label_color');
@@ -51,7 +53,6 @@ if( !function_exists("register_git_settings") ) {
         register_setting( 'git-settings', 'git_loading_icon_color');
         register_setting( 'git-settings', 'git_border_color');
         register_setting( 'git-settings', 'git_border_top_color');
-        register_setting( 'git-settings', 'git_active_medlemsmatrikel');
         register_setting( 'git-settings', 'git_login_button_color');
         register_setting( 'git-settings', 'git_login_button_text_color');
         register_setting( 'git-settings', 'git_login_label_color');
@@ -71,11 +72,11 @@ if( !function_exists("git_admin_page") ) {
         <h1>GIT Inställningar</h1>   
         <form method="post" action="options.php">     
             <?php settings_fields( 'git-settings' ); ?>     
-            <?php do_settings_sections( 'git-settings' ); ?>     
+            <?php do_settings_sections( 'git-settings' ); ?>
             <table class="form-table">       
                 <tr valign="top">       
                     <th scope="row">KlubbID (GUID):</th>       
-                    <td><input type="text" name="git_guid" value="<?php echo get_option('git_guid'); ?>"/></td>       
+                    <td><input type="text" name="git_guid" value="<?php echo get_option('git_guid'); ?>"/></td>
                 </tr>     
                 <tr valign="top">       
                     <th scope="row">Användarnamn:</th>       
@@ -257,6 +258,8 @@ function wpb_demo_shortcode_2() {
         'git_login_label_color' => get_option('git_login_label_color', "#004987"),
         'git_login_input_border_color' => get_option('git_login_input_border_color', "#004987"),
         'git_login_input_border_active_color' => get_option('git_login_input_border_active_color', "#1472c5"),
+        'git_protected_page_url' => get_permalink(get_option('git_restricted_pages')),
+        'git_protected_page_title' => get_page(get_option('git_restricted_pages'))->post_title,
       );
 
     wp_localize_script('my-vue-app', 'vueData', $data );

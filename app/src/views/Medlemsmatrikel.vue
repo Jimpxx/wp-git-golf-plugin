@@ -41,6 +41,7 @@ import axios from "axios";
 import LoadingIcon from "@/components/LoadingIcon.vue";
 
 export default {
+  name: "Medlemsmatrikel",
   props: ["guid", "username", "password"],
   components: {
     LoadingIcon,

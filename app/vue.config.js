@@ -16,7 +16,7 @@ module.exports = {
   },
   publicPath:
     process.env.NODE_ENV === "production"
-      ? process.env.ASSET_PATH || "/wp-content/plugins/git-plugin/app/build"
+      ? process.env.ASSET_PATH || "/wp-content/plugins/wp-git-plugin/app/build"
       : `http://localhost:${devPort}/`,
   configureWebpack: {
     output: {

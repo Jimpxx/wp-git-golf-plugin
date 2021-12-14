@@ -18,13 +18,19 @@ const routes = [
     beforeEnter(to, from, next) {
       // console.log(window);
       // console.log(window.location.href);
-      console.log(to);
-      if (to) {
-        console.log("To..");
-      } else {
-        console.log("No To..");
-      }
-      if (!Store.state.isLoggedIn || activeMedlemsmatrikel == "") {
+      // console.log(to);
+      // if (to) {
+      //   console.log("To..");
+      // } else {
+      //   console.log("No To..");
+      // }
+      console.log(Store.state.isLoggedIn);
+      // if (!Store.state.isLoggedIn || activeMedlemsmatrikel == "") {
+      if (!getCookie("concil-git-valid") || activeMedlemsmatrikel == "") {
+        // this.$cookies.set("concil-icamefrom", "/medlemsmatrikel", "1h");
+        console.log(window.location.href);
+        document.cookie =
+          "concil-icamefrom=" + window.location.href + ";expires=3600;path=/";
         next("/");
         return false;
       }
@@ -50,5 +56,21 @@ const router = createRouter({
   history: createWebHashHistory(appPath),
   routes,
 });
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 
 export default router;

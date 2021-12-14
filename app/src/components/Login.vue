@@ -63,11 +63,6 @@ export default {
       const data = await axios.post(url, body, {
         headers: { "Content-Type": "application/json" },
       });
-      console.log(
-        data.data["soap:Envelope"]["soap:Body"][0][
-          "types:CheckUserLoginClubResponse"
-        ][0]["CheckUserLoginClubResult"][0]._
-      );
 
       this.checkUser =
         data.data["soap:Envelope"]["soap:Body"][0][
@@ -78,10 +73,13 @@ export default {
 
       console.log(this.checkUser);
       if (this.checkUser) {
+        // The user has successfully logged in and a cookie is set to show that the user is logged in
         this.$cookies.set("concil-git-valid", true, "1h");
-        // window.location.reload(); // Javascript reload
-        this.$router.go("/"); // Vue Router reload
-        // window.history.go(-2);
+        const newLocation = this.$cookies.get("concil-icamefrom");
+        // Removes the "concil-icamefrom" cookie because the user is logged in and do not need the cookie until next time the user is logged out
+        this.$cookies.remove("concil-icamefrom");
+        // Redirects to the page the user tried to access
+        window.location.assign(newLocation);
       } else {
         this.error =
           "Felaktig inloggningsuppgifter, Alternativt är du inte medlem i klubben.";

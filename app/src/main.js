@@ -6,9 +6,8 @@ import router from "./router";
 
 const app = createApp(App);
 
+app.use(VueCookies);
 app.use(store);
 app.use(router);
-
-app.use(VueCookies);
 
 app.mount("#app");

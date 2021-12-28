@@ -277,12 +277,15 @@ add_shortcode('git_code', 'wpb_demo_shortcode_2');
 // *
 
 function cookiebasedredirect() {
+    
     // Checks that the cookie "concil-git-valid" is not set
     if ( !isset($_COOKIE["concil-git-valid"])) {
         // GRABS THE CURRENT PAGE NAME - THIS IS ALSO KNOWS AS THE PAGE/POST SLUG
         $pagename = get_query_var('pagename');
 		// Redirects if the slug of the page is "private"
-        if( $pagename == get_page(get_option('git_restricted_pages'))->post_name) {          
+        if( $pagename == get_page(get_option('git_restricted_pages'))->post_name) {     
+            
+            setcookie("concil-icamefrom", get_permalink(get_option('git_restricted_pages')), time() + 3600, "/");
             wp_redirect( get_site_url(). '/' . get_page(get_option('git_installed_page'))->post_name ); exit;
         } else {
 			// The page name/slug is not correct, Return.
@@ -295,7 +298,14 @@ function cookiebasedredirect() {
 }
 add_action("template_redirect", "cookiebasedredirect");
 
+
 ##############################################
+
+add_filter( 'wp_dropdown_pages', 'wporg_domain_make_multiple_select_pages' );
+function wporg_domain_make_multiple_select_pages( $output ) {
+    return str_replace( '<select ', '<select multiple="multiple" ', $output );
+}
+
 
 
 ?>

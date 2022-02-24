@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router";
-import Store from "../store/index.js";
+// import Store from "../store/index.js";
 import Home from "../views/Home.vue";
 import Medlemsmatrikel from "../views/Medlemsmatrikel.vue";
 // import Login from "../views/Login.vue";

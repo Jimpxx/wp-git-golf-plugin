@@ -44,6 +44,8 @@ if( !function_exists("register_git_settings") ) {
         register_setting( 'git-settings', 'git_installed_page' );
         register_setting( 'git-settings', 'git_restricted_pages' );
         register_setting( 'git-settings', 'git_active_medlemsmatrikel');
+        register_setting( 'git-settings', 'git_hidden_input');
+
         // Colors
         register_setting( 'git-settings', 'git_card_background_color');
         register_setting( 'git-settings', 'git_text_color');
@@ -65,9 +67,9 @@ if( !function_exists("register_git_settings") ) {
 // Create WordPress plugin page 
 if( !function_exists("git_admin_page") ) { 
     function git_admin_page(){       
-        if (isset($_POST["git_restricted_pages"]) || isset($_GET["git_restricted_pages"])) {
-            echo "TEST";
-        }
+        // if (isset($_POST["git_restricted_pages"]) || isset($_GET["git_restricted_pages"])) {
+        //     echo "TEST";
+        // }
         ?>   
         <h1>GIT Inställningar</h1>   
         <form method="post" action="options.php">     
@@ -123,6 +125,121 @@ if( !function_exists("git_admin_page") ) {
                     ) ); ?>
                     </td> 
                 </tr>
+
+                
+                <tr valign="top">       
+                    <th scope="row">Lägg till sidor som ska kräva GIT inloggning:</th>       
+                    <td>
+                    <?php 
+                    $pages_array = array( 'Välj en sida' );
+                    // $pages_array = array();
+                    $get_pages = get_pages( 'hide_empty=0' );
+                    foreach ( $get_pages as $page ) {
+                        $pages_array[$page->ID] = esc_attr( $page->post_title );
+                    }
+                    ?>
+                    <select name="restricted" id="restricted">
+                        <?php
+                        foreach ( $pages_array as $key => $value ) {
+                        ?>
+                        <option value="<?= $key ?>"><?= $value ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    <button onclick="updateList(event)">Lägg till</button>
+                    <script>
+                        window.onload = pageLoaded;
+
+                        function pageLoaded() {
+                            // console.log("Laddat");
+                            renderList();
+                        }
+
+                        function renderList() {
+                            // console.log("Render");
+                            var hiddenInput = document.getElementById("git_hidden_input");
+                            var myUl = document.getElementById("restrictul");
+                            console.log(existing);
+                            if (!existing) {
+                                // console.log("False")
+                                existing = JSON.parse(hiddenInput.value);
+                                // console.log(existing)
+                                // existing = JSON.parse(document.getElementById("git_hidden_input").value);
+                            }
+                            // console.log(existing);
+                            // console.log(hiddenInput);
+                            myUl.innerHTML = "";
+                            for (const key in existing) {
+                                const newLi = document.createElement("li");
+                                newLi.innerHTML = existing[key];
+                                myUl.appendChild(newLi);
+                                // hiddenInput.value = existing;
+                                hiddenInput.value = JSON.stringify(existing);
+                            }
+                        }
+                        // var button = document.getElementById("testsave");
+                        // button.addEventListener("click", updateList(e))
+                        var existing = false;
+                        function updateList(event) {
+                            event.preventDefault();
+
+                            // console.log(document.getElementById("git_hidden_input"));
+                            
+                            // e.preventDefault();
+                            var n = document.getElementById("restricted");
+
+                            // console.log(document.getElementById("git_hidden_input").value);
+                            // if (!existing) {
+                            //     existing = JSON.parse(document.getElementById("git_hidden_input").value);
+                            // }
+                            
+                            
+                            // Key (id)
+                            var key = n.value;
+                            // Text
+                            var value = n.options[n.selectedIndex].text;
+                            // Exit if the chosen page is "Välj en sida"
+                            if (key == 0) {
+                                return
+                            }
+                            existing[key] = value;
+                            console.log(existing);
+
+                            if (!existing) {
+                                return
+                            }
+                            // myUl.innerHTML = "";
+
+                            renderList();
+                            // for (const key in existing) {
+                            //     const newLi = document.createElement("li");
+                            //     newLi.innerHTML = existing[key];
+                            //     myUl.appendChild(newLi);
+                            //     hiddenInput.value = JSON.stringify(existing);
+                            // }
+
+                            // Loop
+
+                        }
+                    </script>
+                    </td> 
+                </tr>
+                <tr valign="top">       
+                    <th scope="row">Test result:</th>       
+                    <td>
+                        <ul id="restrictul">
+
+                        </ul>
+                        <input type="hidden" id="git_hidden_input" name="git_hidden_input" value='<?= get_option('git_hidden_input') ?>'>
+                        <?php
+                        var_dump(json_decode(get_option('git_hidden_input')));
+                        ?>
+                    </td> 
+                </tr>
+                    
+
+
                 <tr>
                     <th>
                         <h2>Moduler</h2>
